@@ -127,6 +127,11 @@ stellar contract deploy \
 
 Record the output as `AGENT_VAULT_CONTRACT_ID`.
 
+Initialize the vault with the mainnet USDC SAC ID (`USDC_ASSET_CONTRACT`) as
+the final `asset` argument. For an existing vault upgraded to this version,
+call `set_asset` immediately after the upgrade; the vault fails closed and
+rejects payments until that value is configured.
+
 Apply stricter production policy inputs:
 
 - **Daily cap:** set conservative cap (example `25` USDC/day).
@@ -141,6 +146,16 @@ AGENT_DAILY_CAP_USDC=25
 AGENT_VAULT_CONTRACT_ID=<C...>
 ALLOWED_PAYEES=<G...>,<G...>
 SESSION_EXPIRY_LEDGERS=450
+```
+
+After upgrading an existing vault, run:
+
+```bash
+stellar contract invoke \
+  --id <AGENT_VAULT_CONTRACT_ID> \
+  --source <MAINNET_DEPLOYER_ALIAS> \
+  --network mainnet \
+  -- set_asset --new_asset "$USDC_ASSET_CONTRACT"
 ```
 
 ---
