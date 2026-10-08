@@ -2,8 +2,8 @@
   "name": "routedock",
   "private": true,
   "scripts": {
-    "build": "pnpm -r build",
-    "dev": "pnpm -r --parallel dev",
+    "build": "node init && pnpm -r build",
+    "dev": "node init && pnpm -r --parallel dev",
     "typecheck": "pnpm -r typecheck",
     "lint": "pnpm -r lint",
     "stress:test": "pnpm --filter agent stress",
