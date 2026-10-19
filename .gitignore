@@ -4,8 +4,6 @@ dist/
 .turbo/
 *.tsbuildinfo
 
-.env
-.env.local
 .env.*.local
 .npmrc
 
@@ -33,3 +31,4 @@ DRIP7_ISSUES.md
 apps/web/.env.production.local
 apps/web/.env.cf.production
 .dev.vars
+config.bat
